@@ -68,3 +68,150 @@ $("#ctf").onsubmit=e=>{e.preventDefault();e.target.reset();toast("✉️","Đã 
 /* ===== Khởi tạo ===== */
 badge();drawRev();drawStars();{const a=$$('#guide .card'),cs=[a[0],a[1],a[2],a[4],a[3]],bar=document.createElement('div');bar.className='tabs';cs.forEach((c,i)=>{c.classList.add('tabp');const b=document.createElement('button');b.textContent=c.querySelector('h3').textContent;b.onclick=()=>{cs.forEach((x,j)=>x.classList.toggle('on',i===j));[...bar.children].forEach((x,j)=>x.classList.toggle('on',i===j))};bar.append(b)});$('#guide .grid').before(bar);bar.children[0].click()}
 {const k=Object.keys(hashes).find(k=>"#"+hashes[k]===location.hash);if(k)show(k)}
+/* ===== Giỏ hàng ===== */
+function totals(){
+  const sub = cart.reduce((a,i)=>a+i.qty*P.price,0);
+  const ship = !sub || sub >= CFG.freeFrom ? 0 : CFG.ship;
+
+  return {
+    sub,
+    ship,
+    tot: sub + ship
+  };
+}
+
+function sumHTML(){
+  const t = totals();
+
+  return `
+    <div>
+      <span>Tạm tính</span>
+      <span>${money(t.sub)}</span>
+    </div>
+
+    <div>
+      <span>Phí vận chuyển</span>
+      <span>${t.ship ? money(t.ship) : "Miễn phí"}</span>
+    </div>
+
+    <div class="tot">
+      <span>Tổng thanh toán</span>
+      <span>${money(t.tot)}</span>
+    </div>
+  `;
+}
+
+function drawCart(){
+
+  const box = $("#cartbox");
+
+  if(!box) return;
+
+  if(!cart.length){
+    box.innerHTML = `
+      <div class="empty">
+        🛒
+        <p>Giỏ hàng đang trống.</p>
+      </div>
+    `;
+    return;
+  }
+
+  box.innerHTML = `
+    <div class="cart">
+
+      <div class="card">
+
+        ${cart.map(i=>`
+
+          <div class="ci">
+
+            <div>
+              <b>${P.name}</b>
+              <div>${money(P.price)}</div>
+            </div>
+
+            <div>
+              SL: ${i.qty}
+            </div>
+
+            <div>
+              ${money(i.qty * P.price)}
+            </div>
+
+          </div>
+
+        `).join("")}
+
+      </div>
+
+      <aside class="sum">
+        ${sumHTML()}
+
+        <br>
+
+        <button
+          class="btn"
+          style="width:100%"
+          data-go="checkout">
+          Tiến hành thanh toán
+        </button>
+
+      </aside>
+
+    </div>
+  `;
+}
+
+/* ===== Thanh toán ===== */
+
+function drawSum(){
+
+  const s = $("#cosum");
+
+  if(!s) return;
+
+  s.innerHTML =
+    `<h3>Đơn hàng (${count()} sản phẩm)</h3>`
+    + sumHTML();
+}
+
+const cf = $("#cf");
+
+if(cf){
+
+  cf.onsubmit = e => {
+
+    e.preventDefault();
+
+    if(!cart.length){
+      toast("🛒","Giỏ hàng đang trống.");
+      return;
+    }
+
+    toast(
+      "✅",
+      "Đặt hàng thành công!"
+    );
+
+    cart = [];
+    save();
+
+    e.target.reset();
+
+    go("home");
+  };
+
+}
+
+/* ===== Khởi tạo ===== */
+
+badge();
+
+if($("#cartbox")){
+  drawCart();
+}
+
+if($("#cosum")){
+  drawSum();
+}
