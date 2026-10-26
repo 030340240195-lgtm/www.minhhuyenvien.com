@@ -67,4 +67,4 @@ $("#cf").onsubmit=e=>{e.preventDefault();
 $("#ctf").onsubmit=e=>{e.preventDefault();e.target.reset();toast("✉️","Đã gửi liên hệ. Cảm ơn bạn!")};
 /* ===== Khởi tạo ===== */
 badge();drawRev();drawStars();{const a=$$('#guide .card'),cs=[a[0],a[1],a[2],a[4],a[3]],bar=document.createElement('div');bar.className='tabs';cs.forEach((c,i)=>{c.classList.add('tabp');const b=document.createElement('button');b.textContent=c.querySelector('h3').textContent;b.onclick=()=>{cs.forEach((x,j)=>x.classList.toggle('on',i===j));[...bar.children].forEach((x,j)=>x.classList.toggle('on',i===j))};bar.append(b)});$('#guide .grid').before(bar);bar.children[0].click()}
-{const k=Object.keys(hashes).find(k=>"#"+hashes[k]===location.hash);if(k)show(k)}
+{const k=Object.keys(hashes).find(k=>"#"+hashes[k]===location.hash);show(k || "home");}
