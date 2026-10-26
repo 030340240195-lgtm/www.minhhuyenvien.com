@@ -119,11 +119,20 @@
 </div>
 </div></section>
 
+<section class="sec" id="guide">
+  <div class="wrap">
+    <h2 class="t">Chi tiết sản phẩm</h2>
 
-<section class="sec" id="guide"><div class="wrap">
-  <h2 class="t">Chi tiết sản phẩm</h2>
-  <div class="grid">
-    <div class="card"><div class="e">🧪</div><h3>Thành phần</h3>
+    <div class="tabs" role="tablist" aria-label="Chi tiết sản phẩm">
+      <button class="on" role="tab" aria-selected="true" data-tab="thanh-phan">Thành phần</button>
+      <button role="tab" aria-selected="false" data-tab="cong-dung">Công dụng</button>
+      <button role="tab" aria-selected="false" data-tab="huong-dan">Hướng dẫn sử dụng</button>
+      <button role="tab" aria-selected="false" data-tab="lieu-luong">Liều lượng khuyến nghị</button>
+      <button role="tab" aria-selected="false" data-tab="bao-quan">Lưu ý bảo quản</button>
+    </div>
+
+    <div class="tab-panel on" id="thanh-phan" role="tabpanel">
+      <h3>Thành phần</h3>
       <ul>
         <li>Compost chín</li>
         <li>Biochar</li>
@@ -132,21 +141,38 @@
         <li>Trichoderma</li>
       </ul>
     </div>
-    <div class="card"><div class="e">🌿</div><h3>Công dụng</h3>
+
+    <div class="tab-panel" id="cong-dung" role="tabpanel">
+      <h3>Công dụng</h3>
       <ul>
         <li>Bổ sung dinh dưỡng hữu cơ cho cây.</li>
         <li>Hỗ trợ phát triển bộ rễ.</li>
         <li>Cải tạo đất, tăng khả năng giữ nước và dinh dưỡng.</li>
       </ul>
     </div>
-    <div class="card"><div class="e">📋</div><h3>Hướng dẫn sử dụng</h3>
+
+    <div class="tab-panel" id="huong-dan" role="tabpanel">
+      <h3>Hướng dẫn sử dụng</h3>
       <ul>
         <li>Đặt viên nén lên bề mặt đất hoặc vùi nông quanh gốc cây.</li>
         <li>Tưới nước sau khi bón.</li>
         <li>Sử dụng theo số lượng viên phù hợp với kích thước chậu.</li>
       </ul>
     </div>
-    <div class="card"><div class="e">📦</div><h3>Lưu ý bảo quản</h3>
+
+    <div class="tab-panel" id="lieu-luong" role="tabpanel">
+      <h3>Liều lượng khuyến nghị</h3>
+      <table>
+        <tr><th>Kích thước chậu</th><th>Số viên</th><th>Chu kỳ</th></tr>
+        <tr><td>Nhỏ (dưới 15 cm)</td><td>1 viên</td><td>30–45 ngày/lần</td></tr>
+        <tr><td>Vừa (15–25 cm)</td><td>2 viên</td><td>30–45 ngày/lần</td></tr>
+        <tr><td>Lớn (trên 25 cm)</td><td>3–4 viên</td><td>30–45 ngày/lần</td></tr>
+      </table>
+      <p class="note">* Liều lượng mang tính tham khảo, điều chỉnh theo loại cây và tình trạng đất.</p>
+    </div>
+
+    <div class="tab-panel" id="bao-quan" role="tabpanel">
+      <h3>Lưu ý bảo quản</h3>
       <ul>
         <li>Đậy kín nắp sau khi sử dụng.</li>
         <li>Bảo quản nơi khô ráo, thoáng mát, tránh ánh nắng trực tiếp.</li>
@@ -155,16 +181,7 @@
       </ul>
     </div>
   </div>
-  <div class="card" style="margin-top:20px"><div class="e">⚖️</div><h3>Liều lượng khuyến nghị</h3>
-    <table>
-      <tr><th>Kích thước chậu</th><th>Số viên</th><th>Chu kỳ</th></tr>
-      <tr><td>Nhỏ (dưới 15 cm)</td><td>1 viên</td><td>30–45 ngày/lần</td></tr>
-      <tr><td>Vừa (15–25 cm)</td><td>2 viên</td><td>30–45 ngày/lần</td></tr>
-      <tr><td>Lớn (trên 25 cm)</td><td>3–4 viên</td><td>30–45 ngày/lần</td></tr>
-    </table>
-    <p class="mu" style="margin-top:8px">* Liều lượng mang tính tham khảo, điều chỉnh theo loại cây và tình trạng đất.</p>
-  </div>
-</div></section>
+</section>
 
 <section class="sec alt"><div class="wrap">
   <h2 class="t">Đánh giá khách hàng</h2>
