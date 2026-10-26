@@ -42,10 +42,7 @@ $$("[data-q]").forEach(b=>b.onclick=()=>qi.value=Math.max(1,Math.min(P.stock,get
 qi.onchange=()=>qi.value=getQ();
 $("#add").onclick=()=>{addToCart(getQ());toast("✅",`Đã thêm <b>${getQ()} × ${P.name}</b> vào giỏ hàng.`,'<button class="btn o" data-x>Tiếp tục mua</button><button class="btn" data-x data-go="cart">Xem giỏ hàng</button>')};
 $("#buy").onclick=()=>{addToCart(getQ());go("checkout")};
-const ben = $("#ben");
-
-if (ben) {
-  ben.innerHTML = [
+$("#ben").innerHTML = [
     ["💰","Tiết kiệm chi phí","Một viên thay nhiều loại phân, giảm chi phí chăm sóc."],
     ["👌","Dễ sử dụng","Đặt viên lên đất, tưới nước – chỉ vậy thôi."],
     ["🛡️","An toàn cho cây","Nguyên liệu hữu cơ, dịu nhẹ với bộ rễ."],
