@@ -1,6 +1,6 @@
 /* ===== CẤU HÌNH – chỉnh tại đây ===== */
 const CFG={ship:30000,freeFrom:300000,
-  products:[{id:"bbp",name:"BIO-BUFFER POD",price:120000,stock:250,weight:"200 gam"}]};
+  products:[{id:"bbp",name:"BIO-BUFFER POD",price:120000,stock:250,weight:"Đang cập nhật"}]};
 const P=CFG.products[0];
 const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
 const money=n=>n.toLocaleString("vi-VN")+"đ";
@@ -30,33 +30,13 @@ function toast(i,t,btns=""){$("#mb").innerHTML=`<div class="big">${i}</div><p>${
 $("#modal").onclick=e=>{if(e.target.id==="modal"||e.target.closest("[data-x]"))$("#modal").classList.remove("on")};
 /* ===== Sản phẩm ===== */
 const bag=()=>`<svg viewBox='0 0 200 220' role='img' aria-label='Sản phẩm BIO-BUFFER POD'><path d='M78 52c0-22 44-22 44 0' fill='none' stroke='#5b3a23' stroke-width='8'/><path d='M50 52h100l14 150a8 8 0 0 1-8 9H44a8 8 0 0 1-8-9z' fill='#7a4b2f'/><path d='M50 52h100l3 30H47z' fill='#5b3a23'/><rect x='64' y='98' width='72' height='76' rx='12' fill='#faf6f0'/><path d='M78 154c-2-20 8-32 22-34 0 18-8 32-22 34z' fill='#2a6b3c'/><path d='M102 152c-2-14 6-28 22-30 2 14-6 26-22 30z' fill='#66b36f'/></svg>`;$$("[data-pod]").forEach(e=>e.innerHTML=pod());$$("[data-bag]").forEach(e=>e.innerHTML=bag());
-const pp = $("#pp");
-const pw = $("#pw");
-const ps = $("#ps");
-
-if(pp) pp.textContent = money(P.price);
-if(pw) pw.textContent = P.weight;
-if(ps) ps.textContent = P.stock;
+$("#pp").textContent=money(P.price);$("#pw").textContent=P.weight;$("#ps").textContent=P.stock;
 const qi=$("#qi"),getQ=()=>Math.max(1,Math.min(P.stock,parseInt(qi.value)||1));
 $$("[data-q]").forEach(b=>b.onclick=()=>qi.value=Math.max(1,Math.min(P.stock,getQ()+ +b.dataset.q)));
 qi.onchange=()=>qi.value=getQ();
 $("#add").onclick=()=>{addToCart(getQ());toast("✅",`Đã thêm <b>${getQ()} × ${P.name}</b> vào giỏ hàng.`,'<button class="btn o" data-x>Tiếp tục mua</button><button class="btn" data-x data-go="cart">Xem giỏ hàng</button>')};
 $("#buy").onclick=()=>{addToCart(getQ());go("checkout")};
-$("#ben").innerHTML = [
-    ["💰","Tiết kiệm chi phí","Một viên thay nhiều loại phân, giảm chi phí chăm sóc."],
-    ["👌","Dễ sử dụng","Đặt viên lên đất, tưới nước – chỉ vậy thôi."],
-    ["🛡️","An toàn cho cây","Nguyên liệu hữu cơ, dịu nhẹ với bộ rễ."],
-    ["🌍","Cải tạo đất","Tăng độ tơi xốp, giữ nước và dinh dưỡng."],
-    ["🪨","Không gây chai đất","Không tích tụ hóa chất, đất luôn khỏe."],
-    ["🌳","Phù hợp nhiều loại cây","Cây cảnh, rau, hoa, cây ăn trái trồng chậu."]
-  ].map(b => `
-    <div class="card">
-      <div class="e">${b[0]}</div>
-      <h3>${b[1]}</h3>
-      <p>${b[2]}</p>
-    </div>
-  `).join("");
-}
+$("#ben").innerHTML=[["💰","Tiết kiệm chi phí","Một viên thay nhiều loại phân, giảm chi phí chăm sóc."],["👌","Dễ sử dụng","Đặt viên lên đất, tưới nước – chỉ vậy thôi."],["🛡️","An toàn cho cây","Nguyên liệu hữu cơ, dịu nhẹ với bộ rễ."],["🌍","Cải tạo đất","Tăng độ tơi xốp, giữ nước và dinh dưỡng."],["🪨","Không gây chai đất","Không tích tụ hóa chất, đất luôn khỏe."],["🌳","Phù hợp nhiều loại cây","Cây cảnh, rau, hoa, cây ăn trái trồng chậu."]].map(b=>`<div class="card"><div class="e">${b[0]}</div><h3>${b[1]}</h3><p>${b[2]}</p></div>`).join("");
 /* ===== Đánh giá ===== */
 const seed=[{n:"Lan Anh",s:5,t:"Cây ra rễ mới nhanh, dùng rất tiện.",d:"Đánh giá mẫu"},{n:"Quốc Bảo",s:5,t:"Đóng gói gọn, bón một viên là xong.",d:"Đánh giá mẫu"},{n:"Thu Hà",s:4,t:"Đất chậu tơi xốp hơn sau vài tuần.",d:"Đánh giá mẫu"}];
 let reviews=store.get("mhv_reviews",[]),rate=5;
