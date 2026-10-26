@@ -26,7 +26,18 @@ header{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:va
 @media(max-width:980px){.burger{display:block}.menu{display:none;position:absolute;top:68px;left:0;right:0;background:var(--card);flex-direction:column;padding:10px 20px;box-shadow:var(--sh)}.menu.on{display:flex}.nav .sp{display:none}.nav{gap:4px}.brand{font-size:.78rem;max-width:none;flex:1 1 auto;min-width:0}.brand .logo{width:40px;height:40px}.ic{width:38px;height:38px}.burger{margin-left:0}}
 .btn{display:inline-block;padding:13px 26px;border-radius:999px;border:2px solid var(--g);font-weight:600;transition:.25s;background:var(--g);color:#fff}
 .btn:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(46,125,50,.3);background:var(--g2)}
-.brand .logo{flex:none;border-radius:12px;background:#fff;padding:2px;object-fit:contain}.btn.br{background:var(--b);border-color:var(--b)}.btn.br:hover{background:#5d3822;border-color:#5d3822;box-shadow:0 8px 20px rgba(122,75,47,.3)}.btn.o{background:transparent;color:var(--g)}.btn.o:hover{background:var(--gl)}
+..brand .logo{
+    width:48px;
+    height:48px;
+    min-width:48px;
+    min-height:48px;
+    flex:none;
+    display:block;
+    object-fit:contain;
+    border-radius:12px;
+    background:#fff;
+    padding:2px;
+}.btn.br{background:var(--b);border-color:var(--b)}.btn.br:hover{background:#5d3822;border-color:#5d3822;box-shadow:0 8px 20px rgba(122,75,47,.3)}.btn.o{background:transparent;color:var(--g)}.btn.o:hover{background:var(--gl)}
 .btn.w{background:#fff;color:var(--g2);border-color:#fff}.btn.ow{background:transparent;color:#fff;border-color:#fff}.btn.ow:hover{background:rgba(255,255,255,.15)}
 .hero{position:relative;color:#fff;overflow:hidden;background:radial-gradient(circle at 80% 20%,#66bb6a55,transparent 45%),radial-gradient(circle at 10% 90%,#8d6e6355,transparent 40%),linear-gradient(135deg,#1b5e20,#2e7d32 55%,#4e6b3a)}
 .hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:30px;align-items:center;min-height:540px;padding-top:50px;padding-bottom:50px}
