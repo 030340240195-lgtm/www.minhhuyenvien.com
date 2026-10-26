@@ -1,6 +1,6 @@
 /* ===== CẤU HÌNH – chỉnh tại đây ===== */
 const CFG={ship:30000,freeFrom:300000,
-  products:[{id:"bbp",name:"BIO-BUFFER POD",price:120000,stock:250,weight:"Đang cập nhật"}]};
+  products:[{id:"bbp",name:"BIO-BUFFER POD",price:120000,stock:250,weight:"200 gam"}]};
 const P=CFG.products[0];
 const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
 const money=n=>n.toLocaleString("vi-VN")+"đ";
