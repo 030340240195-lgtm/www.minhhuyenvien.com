@@ -42,7 +42,10 @@ $$("[data-q]").forEach(b=>b.onclick=()=>qi.value=Math.max(1,Math.min(P.stock,get
 qi.onchange=()=>qi.value=getQ();
 $("#add").onclick=()=>{addToCart(getQ());toast("✅",`Đã thêm <b>${getQ()} × ${P.name}</b> vào giỏ hàng.`,'<button class="btn o" data-x>Tiếp tục mua</button><button class="btn" data-x data-go="cart">Xem giỏ hàng</button>')};
 $("#buy").onclick=()=>{addToCart(getQ());go("checkout")};
-$("#ben").innerHTML=[["💰","Tiết kiệm chi phí","Một viên thay nhiều loại phân, giảm chi phí chăm sóc."],["👌","Dễ sử dụng","Đặt viên lên đất, tưới nước – chỉ vậy thôi."],["🛡️","An toàn cho cây","Nguyên liệu hữu cơ, dịu nhẹ với bộ rễ."],["🌍","Cải tạo đất","Tăng độ tơi xốp, giữ nước và dinh dưỡng."],["🪨","Không gây chai đất","Không tích tụ hóa chất, đất luôn khỏe."],["🌳","Phù hợp nhiều loại cây","Cây cảnh, rau, hoa, cây ăn trái trồng chậu."]].map(b=>`<div class="card"><div class="e">${b[0]}</div><h3>${b[1]}</h3><p>${b[2]}</p></div>`).join("");
+const ben = $("#ben");
+
+if(ben){
+    ben.innerHTML =[["💰","Tiết kiệm chi phí","Một viên thay nhiều loại phân, giảm chi phí chăm sóc."],["👌","Dễ sử dụng","Đặt viên lên đất, tưới nước – chỉ vậy thôi."],["🛡️","An toàn cho cây","Nguyên liệu hữu cơ, dịu nhẹ với bộ rễ."],["🌍","Cải tạo đất","Tăng độ tơi xốp, giữ nước và dinh dưỡng."],["🪨","Không gây chai đất","Không tích tụ hóa chất, đất luôn khỏe."],["🌳","Phù hợp nhiều loại cây","Cây cảnh, rau, hoa, cây ăn trái trồng chậu."]].map(b=>`<div class="card"><div class="e">${b[0]}</div><h3>${b[1]}</h3><p>${b[2]}</p></div>`).join("");}
 /* ===== Đánh giá ===== */
 const seed=[{n:"Lan Anh",s:5,t:"Cây ra rễ mới nhanh, dùng rất tiện.",d:"Đánh giá mẫu"},{n:"Quốc Bảo",s:5,t:"Đóng gói gọn, bón một viên là xong.",d:"Đánh giá mẫu"},{n:"Thu Hà",s:4,t:"Đất chậu tơi xốp hơn sau vài tuần.",d:"Đánh giá mẫu"}];
 let reviews=store.get("mhv_reviews",[]),rate=5;
