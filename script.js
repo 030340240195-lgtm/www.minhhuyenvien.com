@@ -58,13 +58,58 @@ $("#cartbox").onclick=e=>{const c=e.target.closest("[data-c]"),r=e.target.closes
 /* ===== Thanh toán ===== */
 function drawSum(){$("#cosum").innerHTML=`<h3>Đơn hàng (${count()} sản phẩm)</h3>`+sumHTML()}
 $$('input[name="m"]').forEach(r=>r.onchange=()=>$("#bank").style.display=r.value==="bank"&&r.checked?"block":"none");
-$("#cf").onsubmit=e=>{e.preventDefault();
-  if(!cart.length){toast("🛒","Giỏ hàng đang trống.");return}
-  const d=new Date(),code="MHV"+d.getFullYear().toString().slice(2)+String(d.getMonth()+1).padStart(2,"0")+String(d.getDate()).padStart(2,"0")+"-"+Math.random().toString(36).slice(2,7).toUpperCase();
-  const f=new FormData(e.target),order={code,cust:Object.fromEntries(f),items:cart,total:totals().tot,at:d.toISOString()};
-  const orders=store.get("mhv_orders",[]);orders.push(order);store.set("mhv_orders",orders);
-  cart=[];save();e.target.reset();$("#bank").style.display="none";
-  toast("🎉",`<b>Đặt hàng thành công!</b><br>Mã đơn hàng: <b>${code}</b><br>Tổng thanh toán: ${money(order.total)}<br>Chúng tôi sẽ liên hệ xác nhận sớm nhất.`,'<button class="btn" data-x data-go="home">Về trang chủ</button>')};
+$("#cf").onsubmit = async e => {
+
+  e.preventDefault();
+
+  if(!cart.length){
+    toast("🛒","Giỏ hàng đang trống.");
+    return;
+  }
+
+  const f = new FormData(e.target);
+
+  const data = {
+    name: f.get("n"),
+    phone: f.get("p"),
+    email: f.get("e"),
+    address: f.get("a"),
+    note: f.get("g"),
+    total: totals().tot
+  };
+
+  try {
+
+    await fetch(
+      "https://script.google.com/macros/s/AKfycbxj_Ym88XKTUQT0439AUJ0sf7gVVpPTG9vb05uUslfyzsA-bmxMdCnAm6ldiQN6by2fDg/exec",
+      {
+        method: "POST",
+        body: JSON.stringify(data)
+      }
+    );
+
+    cart = [];
+    save();
+
+    e.target.reset();
+
+    $("#bank").style.display = "none";
+
+    toast(
+      "✅",
+      "Đặt hàng thành công! Chúng tôi sẽ liên hệ sớm nhất."
+    );
+
+  } catch(err) {
+
+    toast(
+      "❌",
+      "Gửi đơn hàng thất bại!"
+    );
+
+  }
+
+};
 $("#ctf").onsubmit=e=>{e.preventDefault();e.target.reset();toast("✉️","Đã gửi liên hệ. Cảm ơn bạn!")};
 /* ===== Khởi tạo ===== */
 badge();drawRev();drawStars();{const a=$$('#guide .card'),cs=[a[0],a[1],a[2],a[4],a[3]],bar=document.createElement('div');bar.className='tabs';cs.forEach((c,i)=>{c.classList.add('tabp');const b=document.createElement('button');b.textContent=c.querySelector('h3').textContent;b.onclick=()=>{cs.forEach((x,j)=>x.classList.toggle('on',i===j));[...bar.children].forEach((x,j)=>x.classList.toggle('on',i===j))};bar.append(b)});$('#guide .grid').before(bar);bar.children[0].click()}
