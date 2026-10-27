@@ -101,13 +101,9 @@ $("#cf").onsubmit = async e => {
 
   } catch(err) {
 
-    console.error(err);
+  console.error("LOI:", err);
 
-    toast(
-      "❌",
-      "Gửi đơn hàng thất bại!"
-    );
-  }
+}
 
 };
 $("#ctf").onsubmit=e=>{e.preventDefault();e.target.reset();toast("✉️","Đã gửi liên hệ. Cảm ơn bạn!")};
