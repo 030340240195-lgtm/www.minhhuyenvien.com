@@ -81,7 +81,7 @@ $("#cf").onsubmit = async e => {
   try {
 
     await fetch(
-      "https://script.google.com/macros/s/AKfycbwIhz3rwRQH3CpiIAf3enIwz7sxxrbjew0y9Smcr98R7UA2LiFVplHtgm6aBc2j2R6JCw/exec",
+      "https://script.google.com/macros/s/AKfycbzVbVXImyoJd0nKPw1wEAzZAU20DE37aM6h3pWMe0wgAzNKX-gB2DOnpbb2bxsrLALr/exec",
       {
         method: "POST",
         body: formData,
