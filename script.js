@@ -69,22 +69,23 @@ $("#cf").onsubmit = async e => {
 
   const f = new FormData(e.target);
 
-  const data = {
-    name: f.get("n"),
-    phone: f.get("p"),
-    email: f.get("e"),
-    address: f.get("a"),
-    note: f.get("g"),
-    total: totals().tot
-  };
+  const formData = new FormData();
+
+  formData.append("name", f.get("n"));
+  formData.append("phone", f.get("p"));
+  formData.append("email", f.get("e"));
+  formData.append("address", f.get("a"));
+  formData.append("note", f.get("g"));
+  formData.append("total", totals().tot);
 
   try {
 
     await fetch(
-      "https://script.google.com/macros/s/AKfycbxj_Ym88XKTUQT0439AUJ0sf7gVVpPTG9vb05uUslfyzsA-bmxMdCnAm6ldiQN6by2fDg/exec",
+      "https://script.google.com/macros/s/AKfycbzbLmXLcgczAJZgT2uediOM0-meURHGSXS7ALVa5oJxhwqBaxQs_q50FvqYL6n6AWHyjw/exec",
       {
         method: "POST",
-        body: JSON.stringify(data)
+        body: formData,
+        mode: "no-cors"
       }
     );
 
@@ -93,8 +94,6 @@ $("#cf").onsubmit = async e => {
 
     e.target.reset();
 
-    $("#bank").style.display = "none";
-
     toast(
       "✅",
       "Đặt hàng thành công! Chúng tôi sẽ liên hệ sớm nhất."
@@ -102,11 +101,12 @@ $("#cf").onsubmit = async e => {
 
   } catch(err) {
 
+    console.error(err);
+
     toast(
       "❌",
       "Gửi đơn hàng thất bại!"
     );
-
   }
 
 };
