@@ -95,27 +95,25 @@ footer .grid{margin-top:0}footer a{display:block;padding:3px 0;opacity:.85}foote
 footer h4{color:#fff;margin:0 0 8px}.cp{text-align:center;border-top:1px solid #ffffff22;margin-top:24px;padding-top:16px;font-size:.88rem}
 .soc{display:flex;gap:10px;flex-wrap:wrap}.soc a{background:#ffffff18;padding:6px 14px;border-radius:999px}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
-/* Khung ảnh */
-.product-img {
-  display: grid;
-  place-items: center;
-  min-height: 180px;      /* giữ chiều cao, không bị ép co lại */
-  padding: 14px;
+/* Ảnh sản phẩm: khung .im trong thẻ .pc */
+.pc .im {
+  min-height: 240px;
+  padding: 20px;
   overflow: hidden;
 }
 
-/* Ảnh sản phẩm (thẻ img hoặc svg) */
-.product-img img {
-  width: 100%;            /* co theo khung */
-  max-width: 150px;       /* kích thước tối đa trên máy tính */
-  height: auto;           /* giữ đúng tỉ lệ */
-  object-fit: contain;    /* không bị cắt */
+.pc .im svg,
+.pc .im img {
+  width: 100%;
+  max-width: 220px;   /* đổi số này để ảnh to/nhỏ hơn */
+  height: auto;
   display: block;
   margin: auto;
 }
 
 /* Điện thoại */
-@media (max-width: 600px) {
-  .product-img { min-height: 160px; }
-  .product-img img { max-width: 130px; }
+@media (max-width: 700px) {
+  .pc .im { min-height: 200px; padding: 16px; }
+  .pc .im svg,
+  .pc .im img { max-width: 170px; }
 }
