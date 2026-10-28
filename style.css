@@ -105,7 +105,7 @@ footer h4{color:#fff;margin:0 0 8px}.cp{text-align:center;border-top:1px solid #
 .pc .im svg,
 .pc .im img {
   width: 100%;
-  max-width: 210px;   /* đổi số này để ảnh to/nhỏ hơn */
+  max-width: 250px;   /* đổi số này để ảnh to/nhỏ hơn */
   height: auto;
   display: block;
   margin: auto;
@@ -115,5 +115,5 @@ footer h4{color:#fff;margin:0 0 8px}.cp{text-align:center;border-top:1px solid #
 @media (max-width: 700px) {
   .pc .im { min-height: 200px; padding: 16px; }
   .pc .im svg,
-  .pc .im img { max-width: 110px; }
+  .pc .im img { max-width: 150px; }
 }
